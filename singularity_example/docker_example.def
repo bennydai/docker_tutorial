@@ -1,0 +1,32 @@
+BootStrap: docker
+From: PUTYOURDOCKERREPOLINKHERE
+
+%labels
+  MAINTAINER PUTYOURNAME
+  WHATAMI PUTADESCRIPTION
+
+%environment
+  ROS_ROOT=/opt/ros/melodic/share/ros
+  export ROS_ROOT
+  ROS_PYTHON_VERSION=2
+  export ROS_PYTHON_VERSION
+  ROS_DISTRO=melodic
+  export ROS_DISTRO
+  ROS_PACKAGE_PATH=/opt/ros/melodic/share:/opt/ros/melodic/stacks
+  export ROS_PACKAGE_PATH
+  ROS_MASTER_URI=http://localhost:11311
+  export ROS_MASTER_URI
+  LD_LIBRARY_PATH=/opt/ros/melodic/lib:/.singularity.d/libs
+  export LD_LIBRARY_PATH
+  CPATH=/opt/ros/melodic/include
+  export CPATH
+  PATH=/opt/ros/melodic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  export PATH
+  PYTHONPATH=/opt/ros/melodic/lib/python2.7/dist-packages
+  export PYTHONPATH
+  PKG_CONFIG_PATH=/opt/ros/melodic/lib/pkgconfig
+  export PKG_CONFIG_PATH
+  CMAKE_PREFIX_PATH=/opt/ros/melodic
+  export CMAKE_PREFIX_PATH
+  ROS_ETC_DIR=/opt/ros/melodic/etc/ros
+  export ROS_ETC_DIR
