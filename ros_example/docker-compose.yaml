@@ -1,0 +1,46 @@
+version: '2.3'
+
+services:
+  # roscore
+  roscore:
+    image: melodic_base
+    network_mode: host
+    command: roscore
+    privileged: true
+
+  # Bag player
+  rosbag:
+    image: melodic_base
+    volumes:
+      - "${HOME}/docker_tutorial/ros_example/data:/root/data"
+    network_mode: host
+    command: /bin/bash -c "sleep 3; rosbag play /root/data/shapes_6dof.bag"
+
+  # RVIZ
+  nvidia-rviz:
+    image: ros_nvidia
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+    network_mode: host
+    command: rviz
+    privileged: true
+    runtime: nvidia
+
+  # okvis:
+  #   image: okvis
+  #   network_mode: host
+  #   privileged: true
+  #   stdin_open: true
+  #   tty: true
+  #   command: /bin/bash -c "source /root/catkin_ws/devel/setup.bash; roslaunch okvis_ros okvis_easy.launch"
+  #   volumes:
+  #     - "/tmp/.X11-unix:/tmp/.X11-unix"
+  #   environment:
+  #     - "PYTHONUNBUFFERED=1"
+  #     - DISPLAY=$DISPLAY
+  #     - QT_X11_NO_MITSHM=1
