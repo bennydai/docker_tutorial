@@ -30,17 +30,3 @@ services:
     command: rviz
     privileged: true
     runtime: nvidia
-
-  # okvis:
-  #   image: okvis
-  #   network_mode: host
-  #   privileged: true
-  #   stdin_open: true
-  #   tty: true
-  #   command: /bin/bash -c "source /root/catkin_ws/devel/setup.bash; roslaunch okvis_ros okvis_easy.launch"
-  #   volumes:
-  #     - "/tmp/.X11-unix:/tmp/.X11-unix"
-  #   environment:
-  #     - "PYTHONUNBUFFERED=1"
-  #     - DISPLAY=$DISPLAY
-  #     - QT_X11_NO_MITSHM=1
